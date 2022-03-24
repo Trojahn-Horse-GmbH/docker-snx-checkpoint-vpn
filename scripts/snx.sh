@@ -25,9 +25,12 @@ user=$SNX_USER
 password=$SNX_PASSWORD
 snx_command="snxconnect --username $user --host $server --password $password"
 
-iptables -t nat -A POSTROUTING -o tunsnx -j MASQUERADE
-iptables -A FORWARD -i eth0 -j ACCEPT
+#iptables -t nat -A POSTROUTING -o tunsnx -j MASQUERADE
+#iptables -A FORWARD -i eth0 -j ACCEPT
 
+/usr/bin/expect <<EOF
 spawn $snx_command
+interact
+EOF
 
 /bin/bash

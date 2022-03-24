@@ -33,7 +33,8 @@ if [ -f "$certificate_path" ]; then
         snx_command="snx -s $server -c $certificate_path"
     fi
 else
-    snx_command="snx -s $server -u $user"
+    #snx_command="snx -s $server -u $user"
+    snx_command="snxconnect --username $user --host $server --password $password"
 fi
 
 iptables -t nat -A POSTROUTING -o tunsnx -j MASQUERADE

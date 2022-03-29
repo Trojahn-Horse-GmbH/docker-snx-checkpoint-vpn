@@ -6,6 +6,8 @@ ENV TZ=Europe/Berlin
 
 ADD scripts/snx_install.sh /root
 
+RUN uname -r
+
 RUN apt-get update && apt-get install -y bzip2 kmod libpam0g:i386 libx11-6:i386 libstdc++6:i386 libstdc++5:i386 libnss3-tools expect build-essential linux-headers-$(uname -r)
 
 RUN mkdir faketun && cd faketun \

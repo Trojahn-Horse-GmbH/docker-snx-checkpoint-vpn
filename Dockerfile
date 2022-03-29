@@ -1,12 +1,12 @@
 FROM i386/ubuntu:18.04
 
+SHELL ["/usr/bin/linux32", "/bin/sh", "-c"]
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV TZ=Europe/Berlin
 
 ADD scripts/snx_install.sh /root
-
-RUN uname -r
 
 RUN apt-get update && apt-get install -y bzip2 kmod libpam0g:i386 libx11-6:i386 libstdc++6:i386 libstdc++5:i386 libnss3-tools expect build-essential linux-headers-$(uname -r)
 
